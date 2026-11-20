@@ -119,9 +119,9 @@
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="File" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\..\..\..\..\..\Pictures\VS2019 Modern Image Library\vswin2019\Document\Document_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>Images\NewFile_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Folder" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\..\..\..\..\..\Pictures\VS2019 Modern Image Library\vswin2019\FolderClosed\FolderClosed_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>Images\OpenFolder_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

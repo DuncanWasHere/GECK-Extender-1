@@ -106,12 +106,12 @@
     <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release - No CrashRpt, Attach Debugger|Win32'" />
     <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(BGSEEBaseLibPath_DEBUG);$(DirectXLibPath);$(CrashRptLibPath);$(BoostLibPath);$(LibraryPath)</LibraryPath>
     <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Debug - Attach Debugger|Win32'">$(BGSEEBaseLibPath_DEBUG);$(DirectXLibPath);$(CrashRptLibPath);$(BoostLibPath);$(LibraryPath)</LibraryPath>
-    <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(BGSEEBaseIncludePath);$(XSECommonIncludePath);$(DirectXIncludePath);$(SMESundriesIncludePath);$(BoostIncludePath);$(CrashRptIncludePath);$(NETFXKitsDir)\include\um;$(IncludePath)</IncludePath>
-    <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug - Attach Debugger|Win32'">$(BGSEEBaseIncludePath);$(XSECommonIncludePath);$(DirectXIncludePath);$(SMESundriesIncludePath);$(BoostIncludePath);$(CrashRptIncludePath);$(NETFXKitsDir)\include\um;$(IncludePath)</IncludePath>
+    <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(BGSEEBaseIncludePath);$(XSECommonIncludePath);$(XSECommonIncludePath)\..;$(DirectXIncludePath);$(SMESundriesIncludePath);$(BoostIncludePath);$(CrashRptIncludePath);$(NETFXKitsDir)\include\um;$(IncludePath)</IncludePath>
+    <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug - Attach Debugger|Win32'">$(BGSEEBaseIncludePath);$(XSECommonIncludePath);$(XSECommonIncludePath)\..;$(DirectXIncludePath);$(SMESundriesIncludePath);$(BoostIncludePath);$(CrashRptIncludePath);$(NETFXKitsDir)\include\um;$(IncludePath)</IncludePath>
     <SourcePath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SourcePath)</SourcePath>
     <SourcePath Condition="'$(Configuration)|$(Platform)'=='Debug - Attach Debugger|Win32'">$(SourcePath)</SourcePath>
-    <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(BGSEEBaseIncludePath);$(XSECommonIncludePath);$(DirectXIncludePath);$(SMESundriesIncludePath);$(BoostIncludePath);$(CrashRptIncludePath);$(NETFXKitsDir)\include\um;$(IncludePath)</IncludePath>
-    <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release - No CrashRpt, Attach Debugger|Win32'">$(BGSEEBaseIncludePath);$(XSECommonIncludePath);$(DirectXIncludePath);$(SMESundriesIncludePath);$(BoostIncludePath);$(CrashRptIncludePath);$(NETFXKitsDir)\include\um;$(IncludePath)</IncludePath>
+    <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(BGSEEBaseIncludePath);$(XSECommonIncludePath);$(XSECommonIncludePath)\..;$(DirectXIncludePath);$(SMESundriesIncludePath);$(BoostIncludePath);$(CrashRptIncludePath);$(NETFXKitsDir)\include\um;$(IncludePath)</IncludePath>
+    <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release - No CrashRpt, Attach Debugger|Win32'">$(BGSEEBaseIncludePath);$(XSECommonIncludePath);$(XSECommonIncludePath)\..;$(DirectXIncludePath);$(SMESundriesIncludePath);$(BoostIncludePath);$(CrashRptIncludePath);$(NETFXKitsDir)\include\um;$(IncludePath)</IncludePath>
     <SourcePath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SourcePath)</SourcePath>
     <SourcePath Condition="'$(Configuration)|$(Platform)'=='Release - No CrashRpt, Attach Debugger|Win32'">$(SourcePath)</SourcePath>
     <EnableManagedIncrementalBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</EnableManagedIncrementalBuild>
@@ -136,7 +136,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>$(SolutionDir);$(SolutionDir)\..\NVSE\nvse;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir);$(NVSEPath)\nvse;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_WINDOWS;_USRDLL;NDEBUG;CS_VERSION=0x01020000;OBLIVION_VERSION=0x010201A0;CSE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessToFile>false</PreprocessToFile>
       <PreprocessSuppressLineNumbers>false</PreprocessSuppressLineNumbers>
@@ -178,7 +178,9 @@
     </Link>
     <PostBuildEvent>
       <Message>Installing DLL...</Message>
-      <Command>copy "$(TargetPath)" "$(NewVegasPath)\data\NVSE\plugins\$(TargetFileName)"</Command>
+      <Command>if "$(NewVegasPath)"=="" (echo NewVegasPath is not set, skipping install to game folder.) else (
+if not exist "$(NewVegasPath)\data\NVSE\plugins" mkdir "$(NewVegasPath)\data\NVSE\plugins"
+copy /Y "$(TargetPath)" "$(NewVegasPath)\data\NVSE\plugins\$(TargetFileName)")</Command>
     </PostBuildEvent>
     <PreBuildEvent>
       <Command>cscript.exe "$(SolutionDir)\BuildIncrement.jse"</Command>
@@ -189,7 +191,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release - No CrashRpt, Attach Debugger|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>$(SolutionDir);$(SolutionDir)\..\NVSE\nvse;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir);$(NVSEPath)\nvse;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_WINDOWS;_USRDLL;NDEBUG;CS_VERSION=0x01020000;OBLIVION_VERSION=0x010201A0;CSE;WAIT_FOR_DEBUGGER;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessToFile>false</PreprocessToFile>
       <PreprocessSuppressLineNumbers>false</PreprocessSuppressLineNumbers>
@@ -234,7 +236,9 @@
     </Link>
     <PostBuildEvent>
       <Message>Installing DLL...</Message>
-      <Command>copy "$(TargetPath)" "$(NewVegasPath)\data\NVSE\plugins\$(TargetFileName)"</Command>
+      <Command>if "$(NewVegasPath)"=="" (echo NewVegasPath is not set, skipping install to game folder.) else (
+if not exist "$(NewVegasPath)\data\NVSE\plugins" mkdir "$(NewVegasPath)\data\NVSE\plugins"
+copy /Y "$(TargetPath)" "$(NewVegasPath)\data\NVSE\plugins\$(TargetFileName)")</Command>
     </PostBuildEvent>
     <PreBuildEvent>
       <Command>cscript.exe "$(SolutionDir)\BuildIncrement.jse"</Command>
@@ -245,7 +249,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>$(SolutionDir);$(SolutionDir)\..\NVSE\nvse;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir);$(NVSEPath)\nvse;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_DEBUG;WIN32;_WINDOWS;_USRDLL;CS_VERSION=0x01020000;OBLIVION_VERSION=0x010201A0;CSE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <IgnoreStandardIncludePath>false</IgnoreStandardIncludePath>
       <PreprocessToFile>false</PreprocessToFile>
@@ -289,7 +293,9 @@
     </Link>
     <PostBuildEvent>
       <Message>Installing DLL...</Message>
-      <Command>copy "$(TargetPath)" "$(NewVegasPath)\data\NVSE\plugins\$(TargetFileName)"</Command>
+      <Command>if "$(NewVegasPath)"=="" (echo NewVegasPath is not set, skipping install to game folder.) else (
+if not exist "$(NewVegasPath)\data\NVSE\plugins" mkdir "$(NewVegasPath)\data\NVSE\plugins"
+copy /Y "$(TargetPath)" "$(NewVegasPath)\data\NVSE\plugins\$(TargetFileName)")</Command>
     </PostBuildEvent>
     <PreBuildEvent>
       <Command>cscript.exe "$(SolutionDir)\BuildIncrement.jse"</Command>
@@ -306,7 +312,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug - Attach Debugger|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>$(SolutionDir);$(SolutionDir)\..\NVSE\nvse;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir);$(NVSEPath)\nvse;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_DEBUG;WIN32;_WINDOWS;_USRDLL;CS_VERSION=0x01020000;OBLIVION_VERSION=0x010201A0;CSE;WAIT_FOR_DEBUGGER;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <IgnoreStandardIncludePath>false</IgnoreStandardIncludePath>
       <PreprocessToFile>false</PreprocessToFile>
@@ -350,7 +356,9 @@
     </Link>
     <PostBuildEvent>
       <Message>Installing DLL...</Message>
-      <Command>copy "$(TargetPath)" "$(NewVegasPath)\data\NVSE\plugins\$(TargetFileName)"</Command>
+      <Command>if "$(NewVegasPath)"=="" (echo NewVegasPath is not set, skipping install to game folder.) else (
+if not exist "$(NewVegasPath)\data\NVSE\plugins" mkdir "$(NewVegasPath)\data\NVSE\plugins"
+copy /Y "$(TargetPath)" "$(NewVegasPath)\data\NVSE\plugins\$(TargetFileName)")</Command>
     </PostBuildEvent>
     <PreBuildEvent>
       <Command>cscript.exe "$(SolutionDir)\BuildIncrement.jse"</Command>
@@ -410,14 +418,14 @@
     <ClCompile Include="[Common]\HandshakeStructs.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Libraries\SME Sundries\INIEditGUI_Res.h" />
-    <ClInclude Include="..\NVSE\nvse\nvse\containers.h" />
-    <ClInclude Include="..\NVSE\nvse\nvse\GameTypes.h" />
-    <ClInclude Include="..\NVSE\nvse\nvse\NiNodes.h" />
-    <ClInclude Include="..\NVSE\nvse\nvse\NiObjects.h" />
-    <ClInclude Include="..\NVSE\nvse\nvse\NiPoint.h" />
-    <ClInclude Include="..\NVSE\nvse\nvse\NiTypes.h" />
-    <ClInclude Include="..\NVSE\nvse\nvse\PluginAPI.h" />
+    <ClInclude Include="$(SMESundriesIncludePath)\INIEditGUI_Res.h" />
+    <ClInclude Include="$(NVSEPath)\nvse\nvse\containers.h" />
+    <ClInclude Include="$(NVSEPath)\nvse\nvse\GameTypes.h" />
+    <ClInclude Include="$(NVSEPath)\nvse\nvse\NiNodes.h" />
+    <ClInclude Include="$(NVSEPath)\nvse\nvse\NiObjects.h" />
+    <ClInclude Include="$(NVSEPath)\nvse\nvse\NiPoint.h" />
+    <ClInclude Include="$(NVSEPath)\nvse\nvse\NiTypes.h" />
+    <ClInclude Include="$(NVSEPath)\nvse\nvse\PluginAPI.h" />
     <ClInclude Include="Coda\Coda.h" />
     <ClInclude Include="Console.h" />
     <ClInclude Include="EditorAPI\BaseFormComponent.h" />

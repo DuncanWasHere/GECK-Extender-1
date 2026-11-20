@@ -2,14 +2,11 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros">
-    <CrashRptIncludePath>$(USERPROFILE)\Documents\VC++ LIB\CrashRpt\include</CrashRptIncludePath>
-    <CrashRptLibPath>$(USERPROFILE)\Documents\VC++ LIB\CrashRpt\lib</CrashRptLibPath>
-    <DirectXIncludePath>$(USERPROFILE)\Documents\VC++ LIB\DirectX\Include</DirectXIncludePath>
-    <DirectXLibPath>$(USERPROFILE)\Documents\VC++ LIB\DirectX\Lib\x86</DirectXLibPath>
-    <SMESundriesIncludePath>$(USERPROFILE)\Documents\BGS Dev\Code\Libraries\SME Sundries</SMESundriesIncludePath>
-    <XSECommonIncludePath>$(USERPROFILE)\Documents\BGS Dev\Code\Libraries\xSE Common</XSECommonIncludePath>
+    <SolutionDir Condition="'$(SolutionPath)'=='' or '$(SolutionPath)'=='*Undefined*'">$(MSBuildThisFileDirectory)</SolutionDir>
   </PropertyGroup>
-  <PropertyGroup />
+  <PropertyGroup>
+    <_GECKENeedsNativeDeps Condition="'$(MSBuildProjectName)'=='GECK Extender' or '$(MSBuildProjectName)'=='BGSEditorExtenderBase'">true</_GECKENeedsNativeDeps>
+  </PropertyGroup>
   <ItemDefinitionGroup />
   <ItemGroup>
     <BuildMacro Include="CrashRptIncludePath">
@@ -36,5 +33,27 @@
       <Value>$(XSECommonIncludePath)</Value>
       <EnvironmentVariable>true</EnvironmentVariable>
     </BuildMacro>
+    <BuildMacro Include="NVSEPath">
+      <Value>$(NVSEPath)</Value>
+      <EnvironmentVariable>true</EnvironmentVariable>
+    </BuildMacro>
   </ItemGroup>
+  <Target Name="GECKECheckDependencyPaths" BeforeTargets="PrepareForBuild">
+    <Error Condition="'$(SMESundriesIncludePath)'=='' or !Exists('$(SMESundriesIncludePath)')"
+           Text="SMESundriesIncludePath is not set or does not exist ('$(SMESundriesIncludePath)')." />
+    <Error Condition="'$(_GECKENeedsNativeDeps)'=='true' and ('$(XSECommonIncludePath)'=='' or !Exists('$(XSECommonIncludePath)'))"
+           Text="XSECommonIncludePath is not set or does not exist ('$(XSECommonIncludePath)'). Set it to xNVSE source common folder." />
+    <Error Condition="'$(_GECKENeedsNativeDeps)'=='true' and ('$(DirectXIncludePath)'=='' or !Exists('$(DirectXIncludePath)'))"
+           Text="DirectXIncludePath is not set or does not exist ('$(DirectXIncludePath)'). Set it to DirectX 9 SDK Include folder." />
+    <Error Condition="'$(_GECKENeedsNativeDeps)'=='true' and ('$(DirectXLibPath)'=='' or !Exists('$(DirectXLibPath)'))"
+           Text="DirectXLibPath is not set or does not exist ('$(DirectXLibPath)'). Set it to DirectX 9 SDK Lib\x86 folder." />
+    <Error Condition="'$(_GECKENeedsNativeDeps)'=='true' and ('$(CrashRptIncludePath)'=='' or !Exists('$(CrashRptIncludePath)'))"
+           Text="CrashRptIncludePath is not set or does not exist ('$(CrashRptIncludePath)'). Set it to CrashRpt include folder." />
+    <Error Condition="'$(_GECKENeedsNativeDeps)'=='true' and ('$(CrashRptLibPath)'=='' or !Exists('$(CrashRptLibPath)'))"
+           Text="CrashRptLibPath is not set or does not exist ('$(CrashRptLibPath)'). Set it to CrashRpt lib folder." />
+    <Error Condition="'$(MSBuildProjectName)'=='GECK Extender' and ('$(NVSEPath)'=='' or !Exists('$(NVSEPath)\nvse'))"
+           Text="NVSEPath is not set or does not contain an 'nvse' folder ('$(NVSEPath)'). Set it to xNVSE source folder." />
+    <Message Condition="'$(NewVegasPath)'==''" Importance="high"
+             Text="NewVegasPath is not set! $(MSBuildProjectName) will not be installed into the game folder." />
+  </Target>
 </Project>

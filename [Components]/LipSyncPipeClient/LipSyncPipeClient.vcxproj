@@ -65,7 +65,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>$(SolutionDir);$(SolutionDir)\..;$(SolutionDir)\..\..\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessToFile>false</PreprocessToFile>
       <PreprocessSuppressLineNumbers>false</PreprocessSuppressLineNumbers>
@@ -101,7 +101,9 @@
     </Link>
     <PostBuildEvent>
       <Message>Installing DLL...</Message>
-      <Command>copy "$(TargetPath)" "$(NewVegasPath)\data\NVSE\plugins\GECKE\$(TargetFileName)"</Command>
+      <Command>if "$(NewVegasPath)"=="" (echo NewVegasPath is not set, skipping install to game folder.) else (
+if not exist "$(NewVegasPath)\data\NVSE\plugins\GECKE" mkdir "$(NewVegasPath)\data\NVSE\plugins\GECKE"
+copy /Y "$(TargetPath)" "$(NewVegasPath)\data\NVSE\plugins\GECKE\$(TargetFileName)")</Command>
     </PostBuildEvent>
     <PreBuildEvent>
       <Command>cscript.exe "$(SolutionDir)\BuildIncrement.jse"</Command>
@@ -112,7 +114,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>$(SolutionDir);$(SolutionDir)\..;$(SolutionDir)\..\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_DEBUG;WIN32;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <IgnoreStandardIncludePath>false</IgnoreStandardIncludePath>
       <PreprocessToFile>false</PreprocessToFile>
@@ -148,7 +150,9 @@
     </Link>
     <PostBuildEvent>
       <Message>Installing DLL...</Message>
-      <Command>copy "$(TargetPath)" "$(NewVegasPath)\data\NVSE\plugins\GECKE\$(TargetFileName)"</Command>
+      <Command>if "$(NewVegasPath)"=="" (echo NewVegasPath is not set, skipping install to game folder.) else (
+if not exist "$(NewVegasPath)\data\NVSE\plugins\GECKE" mkdir "$(NewVegasPath)\data\NVSE\plugins\GECKE"
+copy /Y "$(TargetPath)" "$(NewVegasPath)\data\NVSE\plugins\GECKE\$(TargetFileName)")</Command>
     </PostBuildEvent>
     <PreBuildEvent>
       <Command>cscript.exe "$(SolutionDir)\BuildIncrement.jse"</Command>
@@ -158,8 +162,8 @@
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\[Libraries]\SME Sundries\MemoryHandler.h" />
-    <ClInclude Include="..\..\..\[Libraries]\SME Sundries\SME_Prefix.h" />
+    <ClInclude Include="$(SMESundriesIncludePath)\MemoryHandler.h" />
+    <ClInclude Include="$(SMESundriesIncludePath)\SME_Prefix.h" />
     <ClInclude Include="..\..\[Common]\OldCSInteropData.h" />
     <ClInclude Include="LipSyncPipeClient.h" />
   </ItemGroup>

@@ -200,12 +200,12 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <IntDir>$(Configuration)\</IntDir>
-    <IncludePath>Script;Script\MUP Base;Script\MUP Implementation;$(XSECommonIncludePath);$(DirectXIncludePath);$(BoostIncludePath);$(CrashRptIncludePath);$(SMESundriesIncludePath);$(NETFXKitsDir)\include\um;$(IncludePath)</IncludePath>
+    <IncludePath>Script;Script\MUP Base;Script\MUP Implementation;$(XSECommonIncludePath);$(XSECommonIncludePath)\..;$(DirectXIncludePath);$(BoostIncludePath);$(CrashRptIncludePath);$(SMESundriesIncludePath);$(NETFXKitsDir)\include\um;$(IncludePath)</IncludePath>
     <LibraryPath>$(DirectXLibPath);$(CrashRptLibPath);$(BoostLibPath);$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <OutDir>$(Configuration)\</OutDir>
-    <IncludePath>Script;Script\MUP Base;Script\MUP Implementation;$(XSECommonIncludePath);$(DirectXIncludePath);$(BoostIncludePath);$(CrashRptIncludePath);$(SMESundriesIncludePath);$(NETFXKitsDir)\include\um;$(IncludePath)</IncludePath>
+    <IncludePath>Script;Script\MUP Base;Script\MUP Implementation;$(XSECommonIncludePath);$(XSECommonIncludePath)\..;$(DirectXIncludePath);$(BoostIncludePath);$(CrashRptIncludePath);$(SMESundriesIncludePath);$(NETFXKitsDir)\include\um;$(IncludePath)</IncludePath>
     <LibraryPath>$(DirectXLibPath);$(CrashRptLibPath);$(BoostLibPath);$(LibraryPath)</LibraryPath>
     <PostBuildEventUseInBuild>false</PostBuildEventUseInBuild>
   </PropertyGroup>
@@ -215,7 +215,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir);$(SolutionDir)\..\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <StringPooling>true</StringPooling>
@@ -254,7 +254,7 @@
       <Optimization>MaxSpeed</Optimization>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir);$(SolutionDir)\..\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <InlineFunctionExpansion>Default</InlineFunctionExpansion>
       <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>

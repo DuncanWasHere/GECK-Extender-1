@@ -58,10 +58,10 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\..\..\..\..\..\..\Pictures\VS2019 Modern Image Library\vswin2019\FolderClosed\FolderClosed_16x.png">
+    <Image Include="Images\OpenFolder_16x.png">
       <Filter>Resources\Images</Filter>
     </Image>
-    <Image Include="..\..\..\..\..\..\..\Pictures\VS2019 Modern Image Library\vswin2019\Document\Document_16x.png">
+    <Image Include="Images\NewFile_16x.png">
       <Filter>Resources\Images</Filter>
     </Image>
   </ItemGroup>

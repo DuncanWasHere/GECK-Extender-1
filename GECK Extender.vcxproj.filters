@@ -167,7 +167,7 @@
     <ClInclude Include="[BGSEEBase]\BGSEditorExtenderBase_Resource.h">
       <Filter>Resources</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Libraries\SME Sundries\INIEditGUI_Res.h">
+    <ClInclude Include="$(SMESundriesIncludePath)\INIEditGUI_Res.h">
       <Filter>Resources</Filter>
     </ClInclude>
     <ClInclude Include="[Common]\HandShakeStructs.h">
@@ -248,19 +248,19 @@
     <ClInclude Include="Settings.h">
       <Filter>Components</Filter>
     </ClInclude>
-    <ClInclude Include="..\NVSE\nvse\nvse\NiNodes.h">
+    <ClInclude Include="$(NVSEPath)\nvse\nvse\NiNodes.h">
       <Filter>NVSE</Filter>
     </ClInclude>
-    <ClInclude Include="..\NVSE\nvse\nvse\NiObjects.h">
+    <ClInclude Include="$(NVSEPath)\nvse\nvse\NiObjects.h">
       <Filter>NVSE</Filter>
     </ClInclude>
-    <ClInclude Include="..\NVSE\nvse\nvse\NiPoint.h">
+    <ClInclude Include="$(NVSEPath)\nvse\nvse\NiPoint.h">
       <Filter>NVSE</Filter>
     </ClInclude>
-    <ClInclude Include="..\NVSE\nvse\nvse\NiTypes.h">
+    <ClInclude Include="$(NVSEPath)\nvse\nvse\NiTypes.h">
       <Filter>NVSE</Filter>
     </ClInclude>
-    <ClInclude Include="..\NVSE\nvse\nvse\PluginAPI.h">
+    <ClInclude Include="$(NVSEPath)\nvse\nvse\PluginAPI.h">
       <Filter>NVSE</Filter>
     </ClInclude>
     <ClInclude Include="EditorAPI\TESObjectREFR.h">
@@ -269,10 +269,10 @@
     <ClInclude Include="WorkspaceManager.h">
       <Filter>Components</Filter>
     </ClInclude>
-    <ClInclude Include="..\NVSE\nvse\nvse\GameTypes.h">
+    <ClInclude Include="$(NVSEPath)\nvse\nvse\GameTypes.h">
       <Filter>NVSE</Filter>
     </ClInclude>
-    <ClInclude Include="..\NVSE\nvse\nvse\containers.h">
+    <ClInclude Include="$(NVSEPath)\nvse\nvse\containers.h">
       <Filter>NVSE</Filter>
     </ClInclude>
     <ClInclude Include="EditorAPI\ExtraDataList.h">

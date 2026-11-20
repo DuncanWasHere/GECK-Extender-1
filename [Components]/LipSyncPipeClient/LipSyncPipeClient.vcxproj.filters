@@ -10,10 +10,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LipSyncPipeClient.h" />
-    <ClInclude Include="..\..\..\[Libraries]\SME Sundries\MemoryHandler.h">
+    <ClInclude Include="$(SMESundriesIncludePath)\MemoryHandler.h">
       <Filter>Utilities</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\[Libraries]\SME Sundries\SME_Prefix.h">
+    <ClInclude Include="$(SMESundriesIncludePath)\SME_Prefix.h">
       <Filter>Utilities</Filter>
     </ClInclude>
     <ClInclude Include="..\..\[Common]\OldCSInteropData.h" />

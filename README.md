@@ -19,10 +19,3 @@ Look into the `EnvVars.prop` property sheet to see how the required environment 
 The artifacts in the `[Depends]` folder should be copied (or symlinked) to the root game directory. The
 `BuildIncrement.jse` file from SME Sundries is to be copied into the working directory and executed manually
 once to generate the `BuildInfo.h` file.
-
-### Directory Structure
-- Root
-	- NVSE
-		- Contents of the NVSE repo go here.
-	- Geck Extender
-		- Contents of this repo go here.

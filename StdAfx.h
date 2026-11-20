@@ -109,10 +109,13 @@ using namespace SME::Functors;
 using namespace SME::MemoryHandler;
 
 // NVSE
+// MEM_CONTEXT::MC_GRIDCELL name collides with enumerator in Windows SDK vssym32.h
+#define MC_GRIDCELL NVSE_MC_GRIDCELL
 #include "nvse\containers.h"
 #include "nvse\PluginAPI.h"
 #include "nvse\NiTypes.h"
 #include "nvse\GameTypes.h"
+#undef MC_GRIDCELL
 
 // BGSEEBASE
 #include "[BGSEEBase]\Main.h"

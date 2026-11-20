@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{20C6411C-596F-4B85-BE4E-8BC91F59D8A6}</ProjectGuid>
+    <RootNamespace>xSECommon</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)'=='Release'" Label="Configuration">
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\EnvVars.props" />
+  </ImportGroup>
+  <PropertyGroup>
+    <TargetName>common_vc9</TargetName>
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(XSECommonIncludePath);$(XSECommonIncludePath)\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ForcedIncludeFiles>common/IPrefix.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <WarningLevel>Level3</WarningLevel>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)'=='Debug'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)'=='Release'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="$(XSECommonIncludePath)\IArchive.cpp" />
+    <ClCompile Include="$(XSECommonIncludePath)\IBufferStream.cpp" />
+    <ClCompile Include="$(XSECommonIncludePath)\IConsole.cpp" />
+    <ClCompile Include="$(XSECommonIncludePath)\IDatabase.cpp" />
+    <ClCompile Include="$(XSECommonIncludePath)\IDataStream.cpp" />
+    <ClCompile Include="$(XSECommonIncludePath)\IDebugLog.cpp" />
+    <ClCompile Include="$(XSECommonIncludePath)\IDirectoryIterator.cpp" />
+    <ClCompile Include="$(XSECommonIncludePath)\IDynamicCreate.cpp" />
+    <ClCompile Include="$(XSECommonIncludePath)\IErrors.cpp" />
+    <ClCompile Include="$(XSECommonIncludePath)\IEvent.cpp" />
+    <ClCompile Include="$(XSECommonIncludePath)\IFIFO.cpp" />
+    <ClCompile Include="$(XSECommonIncludePath)\IFileStream.cpp" />
+    <ClCompile Include="$(XSECommonIncludePath)\IInterlockedLong.cpp" />
+    <ClCompile Include="$(XSECommonIncludePath)\IMemPool.cpp" />
+    <ClCompile Include="$(XSECommonIncludePath)\IMutex.cpp" />
+    <ClCompile Include="$(XSECommonIncludePath)\IObjectPool.cpp" />
+    <ClCompile Include="$(XSECommonIncludePath)\IPipeClient.cpp" />
+    <ClCompile Include="$(XSECommonIncludePath)\IPipeServer.cpp" />
+    <ClCompile Include="$(XSECommonIncludePath)\IRangeMap.cpp" />
+    <ClCompile Include="$(XSECommonIncludePath)\IReadWriteLock.cpp" />
+    <ClCompile Include="$(XSECommonIncludePath)\ISegmentStream.cpp" />
+    <ClCompile Include="$(XSECommonIncludePath)\ISingleton.cpp" />
+    <ClCompile Include="$(XSECommonIncludePath)\ITextParser.cpp" />
+    <ClCompile Include="$(XSECommonIncludePath)\IThread.cpp" />
+    <ClCompile Include="$(XSECommonIncludePath)\ITimer.cpp" />
+    <ClCompile Include="$(XSECommonIncludePath)\ITypes.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

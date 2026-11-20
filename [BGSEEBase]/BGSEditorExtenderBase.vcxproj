@@ -156,7 +156,7 @@
     <None Include="[Resources]\generic.bmp" />
   </ItemGroup>
   <ItemGroup> 
-    <ProjectReference Include="$(XSECommonIncludePath)\common_vc9.vcxproj">
+    <ProjectReference Include="..\[Misc]\xSECommon\xSECommon.vcxproj">
       <Project>{20c6411c-596f-4b85-be4e-8bc91f59d8a6}</Project>
     </ProjectReference>
   </ItemGroup>
